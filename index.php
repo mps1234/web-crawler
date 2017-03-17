@@ -1,12 +1,12 @@
 <?php
 
-	$start = "http://www.akgec.in/bdc17";	//link of the web page you want to crawl
+	$start = "http://www.silive.in";	//link of the web page you want to crawl
 
 	$already_crawled = array();
 	$crawling = array();
 
 	function get_details($url){
-		$options = array('http'=>array('method' =>"GET", 'headers'=>"User-agent: howBot/0.1\n"));
+		$options = array('http'=>array('method' =>"GET", 'headers'=>"User-agent: Mayur\n"));
 		$context = stream_context_create($options);
 
 		$doc = new DOMdocument();
@@ -62,7 +62,7 @@
 				$l = parse_url($url)["scheme"]."://".parse_url($url)["host"].dirname(parse_url($url)["path"]).substr($l,1);
 			}
 			else if(substr($l,0, 1) == "#"){
-				$l = parse_url($url)["scheme"]."://".parse_url($url)["host"].parse_url($url)["path"].$l;	
+				$l = @parse_url($url)["scheme"]."://".@parse_url($url)["host"].@parse_url($url)["path"].$l;	
 			}
 			else if(substr($l, 0, 3) == "../"){
 				$l = parse_url($url)["scheme"]."://".parse_url($url)["host"]."/".$l;
